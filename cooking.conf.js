@@ -28,11 +28,11 @@ cooking.set({
         publicPath: '/',
         clean: false,
         proxy: {
-            '/api/**': {
-                target: 'http://www.mmxiaowu.com/',
-                secure: false,
-                changeOrigin: true
-            }
+            // '/api/**': {
+            //     target: 'http://localhost:3000/',
+            //     secure: false,
+            //     changeOrigin: true
+            // }
         }
     },
 
