@@ -10,7 +10,9 @@ npm install -g cooking-cli
 
 npm install
 
+// 开发模式
 npm run dev
 
-npm run build
+// 生产模式
+npm run dist
 ```
