@@ -4,22 +4,13 @@ var path = require('path');
 var cooking = require('cooking');
 var webpack = require('webpack');
 
-cooking.set({
+var config = {
     entry: {
         app: './src/main.js',
         login: './src/login.js',
         vendor: ['vue', 'vue-router', 'vuex', 'vuex-router-sync', './src/polyfill']
     },
-    dist: './dist',
-    template: [{
-        filename: 'index.html',
-        template: 'src/template/index.html',
-        chunks: ['common', 'vendor', 'app']
-    }, {
-        filename: 'login.html',
-        template: 'src/template/login.html',
-        chunks: ['common', 'vendor', 'login']
-    }],
+    dist: './dist/static',
     externals: {
         'jQuery': 'jquery'
     },
@@ -28,11 +19,7 @@ cooking.set({
         publicPath: '/',
         clean: false,
         proxy: {
-            // '/api/**': {
-            //     target: 'http://localhost:3000/',
-            //     secure: false,
-            //     changeOrigin: true
-            // }
+            
         }
     },
 
@@ -40,12 +27,35 @@ cooking.set({
     clean: true,
     hash: true,
     sourceMap: true,
-    publicPath: '/',
+    publicPath: '/static/',
     assetsPath: 'images',
     urlLoaderLimit: 10000,
     extractCSS: 'css/[name].[contenthash:7].css',
     extends: ['vue2', 'eslint', 'less', ]
-});
+}
+if (process.env.NODE_ENV === 'production') {
+    config.template = [{
+        filename: '../index.html',
+        template: 'src/template/index.html',
+        chunks: ['common', 'vendor', 'app']
+    }, {
+        filename: '../login.html',
+        template: 'src/template/login.html',
+        chunks: ['common', 'vendor', 'login']
+    }]
+} else {
+    config.template = [{
+        filename: 'index.html',
+        template: 'src/template/index.html',
+        chunks: ['vendor', 'app']
+    }, {
+        filename: 'login.html',
+        template: 'src/template/login.html',
+        chunks: ['vendor', 'login']
+    }]
+}
+
+cooking.set(config);
 
 cooking.add('resolve.alias', {
     'src': path.join(__dirname, 'src')

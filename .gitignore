@@ -4,3 +4,6 @@ npm-debug.log
 build
 .cache
 .idea
+dist/static/
+dist/index.html
+dist/login.html
