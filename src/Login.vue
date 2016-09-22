@@ -2,7 +2,7 @@
     <section class="container">
         <div class="login">
             <h1>后台管理</h1>
-            <ajax-form id="shake-setting" action="/api/?action=login" method="post" :on-form-complete="onFormComplete">
+            <ajax-form id="shake-setting" action="/api/?action=login" method="post" :onFormComplete="onFormComplete">
                 <p><input v-model="form.username" type="text" name="username" value="" placeholder="请输入用户名"></p>
                 <p><input v-model="form.password" type="password" name="password" value="" placeholder="请输入密码"></p>
                 <p class="remember_me">
@@ -44,7 +44,9 @@
         methods: {
             onFormComplete(res) {
                 if (res.code === 200) {
-                    this.$store.dispatch('showMsg', '登录成功', 'success')
+                    this.$store.dispatch('showMsg', {
+                        content: '登录成功', type: "success"
+                    })
                     ls.set("token", res.data)
                     setTimeout(() => {
                         window.location.href = "/post"

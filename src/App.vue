@@ -53,11 +53,11 @@
 </div>
 </template>
 <script lang="babel">
-import '../html/editor.md/css/editormd.css'
+import '../static/editor.md/css/editormd.css'
 import '../html/css/hljs/googlecode.css'
 import '../html/css/style.css'
-import 'toastr/build/toastr.css'
-import 'nprogress/nprogress.css'
+import '../node_modules/toastr/build/toastr.css'
+import '../node_modules/nprogress/nprogress.css'
 import { mapGetters } from 'vuex'
 import NProgress from 'nprogress'
 import About from './components/about.vue'
