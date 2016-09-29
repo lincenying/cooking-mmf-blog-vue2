@@ -14,5 +14,5 @@ npm install
 npm run dev
 
 // 生产模式
-npm run dist
+npm run build
 ```

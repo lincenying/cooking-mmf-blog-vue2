@@ -3,6 +3,7 @@
 var path = require('path');
 var cooking = require('cooking');
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var config = {
     entry: {
@@ -19,7 +20,11 @@ var config = {
         publicPath: '/',
         clean: false,
         proxy: {
-            
+            '/api/**': {
+                target: 'http://localhost:3000/',
+                secure: false,
+                changeOrigin: true
+            }
         }
     },
 
@@ -31,7 +36,7 @@ var config = {
     assetsPath: 'images',
     urlLoaderLimit: 10000,
     extractCSS: 'css/[name].[contenthash:7].css',
-    extends: ['vue2', 'eslint', 'less', ]
+    extends: ['lcy-vue2', 'eslint']
 }
 if (process.env.NODE_ENV === 'production') {
     config.template = [{
@@ -67,6 +72,16 @@ if (process.env.NODE_ENV === 'production') {
     cooking.add('plugin.CommonsChunk', new webpack.optimize.CommonsChunkPlugin({
         names: ["common", "vendor"]
     }))
+    cooking.add('plugin.CopyWebpackPlugin', new CopyWebpackPlugin([{
+        from: 'favicon.ico',
+        to: path.join(__dirname, 'dist')
+    },{
+        from: {
+            glob:'static/editor.md/**/*',
+            dot: true
+        },
+        to: path.join(__dirname, 'dist')
+    }]))
 }
 
 module.exports = cooking.resolve()
