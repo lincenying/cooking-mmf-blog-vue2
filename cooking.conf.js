@@ -31,7 +31,7 @@ var config = {
     // production
     clean: true,
     hash: true,
-    sourceMap: true,
+    sourceMap: false,
     publicPath: '/static/',
     assetsPath: 'images',
     urlLoaderLimit: 10000,
