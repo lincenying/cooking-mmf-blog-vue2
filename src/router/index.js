@@ -33,7 +33,7 @@ const guardRoute = (to, from, next) => {
 }
 
 const router = new VueRouter({
-    mode: 'hash',
+    mode: 'history',
     base: __dirname,
     scrollBehavior,
     routes: [
