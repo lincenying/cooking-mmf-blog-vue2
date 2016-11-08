@@ -47,11 +47,11 @@ if (process.env.NODE_ENV === 'production') {
     config.template = [{
         filename: '../index.html',
         template: 'src/template/index.html',
-        chunks: ['common', 'vendor', 'app']
+        chunks: ['manifest', 'vendor', 'app']
     }, {
         filename: '../login.html',
         template: 'src/template/login.html',
-        chunks: ['common', 'vendor', 'login']
+        chunks: ['manifest', 'vendor', 'login']
     }]
 } else {
     config.template = [{
@@ -75,8 +75,12 @@ if (process.env.NODE_ENV === 'production') {
     cooking.add('output.filename', 'js/[name].[chunkhash].js')
     cooking.add('output.chunkFilename', 'js/[id].[chunkhash].js')
     cooking.add('plugin.CommonsChunk', new webpack.optimize.CommonsChunkPlugin({
-        names: ["common", "vendor"]
+        name: 'vendor',
+        minChunks: function(module, count) {
+            return (module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0)
+        }
     }))
+    cooking.add('plugin.CommonsChunk', new webpack.optimize.CommonsChunkPlugin({name: 'manifest', chunks: ['vendor']}))
     cooking.add('plugin.CopyWebpackPlugin', new CopyWebpackPlugin([{
         from: 'favicon.ico',
         to: path.join(__dirname, 'dist')
@@ -87,6 +91,10 @@ if (process.env.NODE_ENV === 'production') {
         },
         to: path.join(__dirname, 'dist')
     }]))
+} else {
+    cooking.add('plugin.CommonsChunk', new webpack.optimize.CommonsChunkPlugin({
+        names: ["vendor"]
+    }))
 }
 
 module.exports = cooking.resolve()

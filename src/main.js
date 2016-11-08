@@ -22,8 +22,6 @@ router.beforeEach((to, from, next) => {
         if (ls.get(path) && !scrollTop) ls.remove(path)
     }
     store.dispatch('gProgress', 0)
-    // 路由用history模式, 不需要下面这行
-    // if (to.name === 'article') window.scrollTo(0, 0)
     next()
 })
 
