@@ -5,7 +5,7 @@ var cooking = require('cooking');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer')
 var browserslist = require('browserslist')
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var config = {
     entry: {
@@ -75,12 +75,8 @@ if (process.env.NODE_ENV === 'production') {
     cooking.add('output.filename', 'js/[name].[chunkhash].js')
     cooking.add('output.chunkFilename', 'js/[id].[chunkhash].js')
     cooking.add('plugin.CommonsChunk', new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function(module, count) {
-            return (module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0)
-        }
+        names: ["vendor", "manifest"]
     }))
-    cooking.add('plugin.CommonsChunk', new webpack.optimize.CommonsChunkPlugin({name: 'manifest', chunks: ['vendor']}))
     cooking.add('plugin.CopyWebpackPlugin', new CopyWebpackPlugin([{
         from: 'favicon.ico',
         to: path.join(__dirname, 'dist')
