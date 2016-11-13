@@ -28,6 +28,7 @@
     "vuex-router-sync": "^3.0.0"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^3.0.1"
+    "copy-webpack-plugin": "^3.0.1",
+    "webpack-merge": "^0.15.0"
   }
 }

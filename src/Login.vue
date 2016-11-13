@@ -2,12 +2,13 @@
     <section class="container">
         <div class="login">
             <h1>后台管理</h1>
-            <ajax-form id="shake-setting" action="/api/?action=login" method="post" :onFormComplete="onFormComplete">
+            <ajax-form id="shake-setting" :action="api" method="post" :onFormComplete="onFormComplete">
                 <p><input v-model="form.username" type="text" name="username" value="" placeholder="请输入用户名"></p>
                 <p><input v-model="form.password" type="password" name="password" value="" placeholder="请输入密码"></p>
                 <p class="remember_me">
                     <label>
                         <input v-model="form.remember_me" type="checkbox" name="remember_me" id="remember_me">
+                        <input value="login" type="hidden" name="action" id="action">
                         保持登录
                     </label>
                 </p>
@@ -18,8 +19,9 @@
 </template>
 <script lang="babel">
     /* global window */
-    import '../html/css/login.css'
+    import './assets/css/login.css'
     import '../node_modules/toastr/build/toastr.css'
+    import config from './config'
     import { mapGetters } from 'vuex'
     import ls from 'store2'
     import ajaxForm from './components/app/ajax-form.vue'
@@ -34,6 +36,7 @@
         },
         data() {
             return {
+                api: config.api,
                 form: {
                     username: '',
                     password: '',
@@ -49,7 +52,7 @@
                     })
                     ls.set("token", res.data)
                     setTimeout(() => {
-                        window.location.href = "/post"
+                        window.location.href = "/admin/post"
                     }, 1000)
                 } else {
                     this.$store.dispatch('showMsg', res.message)
