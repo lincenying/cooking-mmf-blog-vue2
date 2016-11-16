@@ -81,10 +81,7 @@ if (process.env.NODE_ENV === 'production') {
         from: 'favicon.ico',
         to: path.join(__dirname, 'dist')
     }, {
-        from: {
-            glob:'static/editor.md/**/*',
-            dot: true
-        },
+        from: 'static/editor.md/**/*',
         to: path.join(__dirname, 'dist')
     }]))
 } else {
