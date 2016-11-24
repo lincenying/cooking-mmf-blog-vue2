@@ -63,7 +63,8 @@ if (process.env.NODE_ENV === 'production') {
 cooking.set(config)
 
 cooking.add('resolve.alias', {
-    'src': path.join(__dirname, 'src')
+    'src': path.join(__dirname, 'src'),
+    'api-config': path.resolve(__dirname, './src/api/config-client')
 })
 cooking.add('plugin.ProvidePlugin', new webpack.ProvidePlugin({$: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery'}))
 

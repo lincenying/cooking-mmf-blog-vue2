@@ -70,8 +70,8 @@ glob@^7.0.5:
     path-is-absolute "^1.0.0"
 
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
-  version "4.1.10"
-  resolved "http://registry.npm.taobao.org/graceful-fs/download/graceful-fs-4.1.10.tgz#f2d720c22092f743228775c75e3612632501f131"
+  version "4.1.11"
+  resolved "http://registry.npm.taobao.org/graceful-fs/download/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -255,8 +255,8 @@ lodash.toplainobject@^3.0.0:
     lodash.keysin "^3.0.0"
 
 lodash@^4.3.0:
-  version "4.16.6"
-  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.16.6.tgz#d22c9ac660288f3843e16ba7d2b5d06cca27d777"
+  version "4.17.2"
+  resolved "http://registry.npm.taobao.org/lodash/download/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
 minimatch@^3.0.0, minimatch@^3.0.2, "minimatch@2 || 3":
   version "3.0.3"
@@ -303,12 +303,12 @@ vue-resource@^1.0.3:
   resolved "http://registry.npm.taobao.org/vue-resource/download/vue-resource-1.0.3.tgz#8d52d0d8a9ed5f2ae704c68d530c84ceaf97be14"
 
 vue-router@^2.0.1:
-  version "2.0.1"
-  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-2.0.1.tgz#88b83cdc9497bad5b20b579e847a7e7240e221dd"
+  version "2.0.3"
+  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-2.0.3.tgz#444e246fd42d65a34dea6c3be8fde3315c4ba6f7"
 
 vue@^2.0.5:
-  version "2.0.5"
-  resolved "http://registry.npm.taobao.org/vue/download/vue-2.0.5.tgz#b99dc7180a802d1148a508db3d84b52c09b5ca8e"
+  version "2.1.3"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.1.3.tgz#20161b8684777754fd9823134b38f13c1e197882"
 
 vue2-ajax-form@^1.0.0:
   version "1.0.0"
@@ -322,7 +322,7 @@ vuex@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/vuex/download/vuex-2.0.0.tgz#26befa44de220f009e432d1027487bff29571cee"
 
-webpack-merge:
+webpack-merge@^0.15.0:
   version "0.15.0"
   resolved "http://registry.npm.taobao.org/webpack-merge/download/webpack-merge-0.15.0.tgz#f6a930516d5eccba0baabeb30ea96b6a6737c193"
   dependencies:
