@@ -7,9 +7,9 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var config = {
     entry: {
-        app: './src/main.js',
-        login: './src/login.js',
-        vendor: ['vue', 'vue-router', 'vuex', 'vuex-router-sync', './src/polyfill']
+        app: './src/app.js',
+        admin: './src/admin.js',
+        vendor: ['vue', 'vue-router', 'vuex', 'vuex-router-sync', 'axios', './src/polyfill']
     },
     dist: './dist/static',
     externals: {
@@ -43,9 +43,9 @@ if (process.env.NODE_ENV === 'production') {
         template: 'src/template/index.html',
         chunks: ['manifest', 'vendor', 'app']
     }, {
-        filename: '../login.html',
-        template: 'src/template/login.html',
-        chunks: ['manifest', 'vendor', 'login']
+        filename: '../admin.html',
+        template: 'src/template/admin.html',
+        chunks: ['manifest', 'vendor', 'admin']
     }]
 } else {
     config.template = [{
@@ -53,16 +53,21 @@ if (process.env.NODE_ENV === 'production') {
         template: 'src/template/index.html',
         chunks: ['vendor', 'app']
     }, {
-        filename: 'login.html',
-        template: 'src/template/login.html',
-        chunks: ['vendor', 'login']
+        filename: 'admin.html',
+        template: 'src/template/admin.html',
+        chunks: ['vendor', 'admin']
     }]
 }
 
 cooking.set(config)
 
 cooking.add('resolve.alias', {
-    'src': path.join(__dirname, 'src'),
+    '~src': path.resolve(__dirname, './src'),
+    '~components': path.resolve(__dirname, './src/components'),
+    '~api': path.resolve(__dirname, './src/api'),
+    '~pages': path.resolve(__dirname, './src/pages'),
+    '~store': path.resolve(__dirname, './src/store'),
+    '~utils': path.resolve(__dirname, './src/utils'),
     'api-config': path.resolve(__dirname, './src/api/config-client')
 })
 cooking.add('plugin.ProvidePlugin', new webpack.ProvidePlugin({$: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery'}))

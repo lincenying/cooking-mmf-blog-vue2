@@ -1,4 +1,4 @@
-# mmf-blog vuejs 2.0版
+# mmf-blog vuejs 2.0 v2版
 
 demo: [http://vue2.mmxiaowu.com](http://vue2.mmxiaowu.com)
 
@@ -22,7 +22,7 @@ vue2 服务端渲染版本: [https://github.com/lincenying/mmf-blog-vue2-ssr](ht
 
 ---
 
-先安装 api server: https://github.com/lincenying/mmf-blog-api
+先安装 api server: https://github.com/lincenying/mmf-blog-api-v2
 
 ```
 npm install -g cooking-cli
@@ -40,4 +40,4 @@ npm run build
 http://localhost:8080
 
 登录
-http://localhost:8080/login.html
+http://localhost:8080/admin.html
