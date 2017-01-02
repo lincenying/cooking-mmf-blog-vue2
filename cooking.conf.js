@@ -85,9 +85,6 @@ if (process.env.NODE_ENV === 'production') {
     cooking.add('plugin.CopyWebpackPlugin', new CopyWebpackPlugin([{
         from: 'favicon.ico',
         to: path.join(__dirname, 'dist')
-    }, {
-        from: 'static/editor.md/**/*',
-        to: path.join(__dirname, 'dist')
     }]))
 } else {
     cooking.add('plugin.CommonsChunk', new webpack.optimize.CommonsChunkPlugin({
